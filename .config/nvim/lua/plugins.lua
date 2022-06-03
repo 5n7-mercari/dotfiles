@@ -617,7 +617,6 @@ return require("packer").startup({
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buffer })
-					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = buffer })
 					vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { buffer = buffer })
 				end
 
@@ -970,6 +969,9 @@ return require("packer").startup({
 							return "--hidden"
 						end,
 					})
+				end)
+				vim.keymap.set("n", "gi", function()
+					require("telescope.builtin").lsp_implementations()
 				end)
 				vim.keymap.set("n", "gr", function()
 					require("telescope.builtin").lsp_references()
