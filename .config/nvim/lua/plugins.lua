@@ -305,7 +305,7 @@ return require("packer").startup({
 			end,
 		})
 
-		-- index: L
+		-- index: l
 
 		use({
 			"L3MON4D3/LuaSnip",
