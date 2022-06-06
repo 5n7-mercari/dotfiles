@@ -957,9 +957,6 @@ return require("packer").startup({
 				vim.keymap.set("n", "<leader><leader>", function()
 					require("telescope.builtin").buffers()
 				end)
-				vim.keymap.set("n", "<leader>dx", function()
-					require("telescope.builtin").diagnostics()
-				end)
 				vim.keymap.set("n", "<leader>ff", function()
 					require("telescope.builtin").find_files({ hidden = true })
 				end)
@@ -1000,8 +997,7 @@ return require("packer").startup({
 				require("trouble").setup()
 			end,
 			setup = function()
-				vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
-				vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+				vim.keymap.set("n", "<leader>dx", "<cmd>TroubleToggle document_diagnostics<cr>")
 			end,
 		})
 
