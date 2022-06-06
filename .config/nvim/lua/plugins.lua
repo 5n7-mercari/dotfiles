@@ -308,6 +308,19 @@ return require("packer").startup({
 		-- index: l
 
 		use({
+			"Maan2003/lsp_lines.nvim",
+			after = { "nvim-lspconfig" },
+			config = function()
+				require("lsp_lines").register_lsp_virtual_lines()
+			end,
+			setup = function()
+				vim.diagnostic.config({
+					virtual_text = false,
+				})
+			end,
+		})
+
+		use({
 			"L3MON4D3/LuaSnip",
 			after = { "friendly-snippets" },
 			config = function()
