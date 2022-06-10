@@ -667,6 +667,13 @@ return require("packer").startup({
 									client.server_capabilities.document_formatting = false
 									client.server_capabilities.document_range_formatting = false
 								end
+								opts.settings = {
+									Lua = {
+										diagnostics = {
+											globals = { "vim" },
+										},
+									},
+								}
 							end
 
 							if server_name == "sqls" then
