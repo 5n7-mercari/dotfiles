@@ -987,6 +987,11 @@ return require("packer").startup({
 						end,
 					})
 				end)
+				vim.keymap.set("n", "<leader>lG", function()
+					require("telescope.builtin").live_grep({
+						glob_pattern = "!*_test.go",
+					})
+				end)
 				vim.keymap.set("n", "gi", function()
 					require("telescope.builtin").lsp_implementations()
 				end)
