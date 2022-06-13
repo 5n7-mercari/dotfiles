@@ -425,7 +425,13 @@ return require("packer").startup({
 		use({
 			"nkakouros-original/numbers.nvim",
 			config = function()
-				require("numbers").setup()
+				require("numbers").setup({
+					excluded_filetypes = {
+						"NvimTree",
+						"TelescopePrompt",
+						"Trouble",
+					},
+				})
 			end,
 		})
 
