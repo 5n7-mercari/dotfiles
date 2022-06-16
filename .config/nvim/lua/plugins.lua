@@ -427,7 +427,9 @@ return require("packer").startup({
 			config = function()
 				require("numbers").setup({
 					excluded_filetypes = {
+						"alpha",
 						"NvimTree",
+						"packer",
 						"TelescopePrompt",
 						"Trouble",
 					},
