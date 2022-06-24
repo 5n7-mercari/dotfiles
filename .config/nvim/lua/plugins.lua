@@ -317,6 +317,9 @@ return require("packer").startup({
 				vim.diagnostic.config({
 					virtual_text = false,
 				})
+				vim.keymap.set("n", "<leader>vl", function()
+					vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+				end)
 			end,
 		})
 
