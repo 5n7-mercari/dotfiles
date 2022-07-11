@@ -948,6 +948,9 @@ return require("packer").startup({
 			event = { "VimEnter" },
 		})
 
+		-- index: s
+		use({ "segeljakt/vim-silicon", cmd = { "Silicon" } })
+
 		-- index: t
 
 		use({
