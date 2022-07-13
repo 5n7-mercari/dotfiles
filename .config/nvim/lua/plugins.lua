@@ -395,7 +395,6 @@ return require("packer").startup({
 						require("null-ls").builtins.formatting.latexindent,
 						require("null-ls").builtins.formatting.markdownlint,
 						require("null-ls").builtins.formatting.prettier,
-						require("null-ls").builtins.formatting.protolint,
 						require("null-ls").builtins.formatting.shfmt,
 						require("null-ls").builtins.formatting.stylua,
 						require("null-ls").builtins.formatting.terraform_fmt,
