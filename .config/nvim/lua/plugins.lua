@@ -731,6 +731,14 @@ return require("packer").startup({
 		use({ "dstein64/nvim-scrollview", event = { "VimEnter" } })
 
 		use({
+			"kylechui/nvim-surround",
+			config = function()
+				require("nvim-surround").setup()
+			end,
+			event = { "VimEnter" },
+		})
+
+		use({
 			"akinsho/nvim-toggleterm.lua",
 			config = function()
 				require("toggleterm").setup({ open_mapping = "<c-t>t", direction = "float" })
@@ -971,6 +979,14 @@ return require("packer").startup({
 			after = { "telescope.nvim" },
 			config = function()
 				require("telescope").load_extension("ghq")
+			end,
+		})
+
+		use({
+			"helmecke/telescope-git-worktree.nvim",
+			after = { "telescope.nvim" },
+			config = function()
+				require("telescope").load_extension("git_worktree")
 			end,
 		})
 
