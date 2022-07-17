@@ -26,7 +26,10 @@ return require("packer").startup({
 			event = { "VimEnter" },
 		})
 
-		use({ "hotwatermorning/auto-git-diff", event = { "VimEnter" } })
+		use({
+			"hotwatermorning/auto-git-diff",
+			event = { "VimEnter" },
+		})
 
 		use({
 			"rmagatti/auto-session",
@@ -65,7 +68,9 @@ return require("packer").startup({
 			event = { "VimEnter" },
 		})
 
-		use({ "rhysd/committia.vim" })
+		use({
+			"rhysd/committia.vim",
+		})
 
 		-- index: d
 
@@ -127,7 +132,10 @@ return require("packer").startup({
 			end,
 		})
 
-		use({ "rafamadriz/friendly-snippets", event = { "VimEnter" } })
+		use({
+			"rafamadriz/friendly-snippets",
+			event = { "VimEnter" },
+		})
 
 		-- index: g
 
@@ -265,7 +273,10 @@ return require("packer").startup({
 			event = { "VimEnter" },
 		})
 
-		use({ "onsails/lspkind-nvim", event = { "VimEnter" } })
+		use({
+			"onsails/lspkind-nvim",
+			event = { "VimEnter" },
+		})
 
 		use({
 			"nvim-lualine/lualine.nvim",
@@ -626,9 +637,15 @@ return require("packer").startup({
 			end,
 		})
 
-		use({ "kevinhwang91/nvim-hlslens", event = { "CmdLineEnter" } })
+		use({
+			"kevinhwang91/nvim-hlslens",
+			event = { "CmdLineEnter" },
+		})
 
-		use({ "williamboman/nvim-lsp-installer", event = { "VimEnter" } })
+		use({
+			"williamboman/nvim-lsp-installer",
+			event = { "VimEnter" },
+		})
 
 		use({
 			"neovim/nvim-lspconfig",
@@ -728,7 +745,10 @@ return require("packer").startup({
 			end,
 		})
 
-		use({ "dstein64/nvim-scrollview", event = { "VimEnter" } })
+		use({
+			"dstein64/nvim-scrollview",
+			event = { "VimEnter" },
+		})
 
 		use({
 			"kylechui/nvim-surround",
@@ -910,9 +930,14 @@ return require("packer").startup({
 			end,
 		})
 
-		use({ "kyazdani42/nvim-web-devicons" })
+		use({
+			"kyazdani42/nvim-web-devicons",
+		})
 
-		use({ "haringsrob/nvim_context_vt", after = { "nvim-treesitter" } })
+		use({
+			"haringsrob/nvim_context_vt",
+			after = { "nvim-treesitter" },
+		})
 
 		-- index: o
 
@@ -956,7 +981,10 @@ return require("packer").startup({
 		})
 
 		-- index: s
-		use({ "segeljakt/vim-silicon", cmd = { "Silicon" } })
+		use({
+			"segeljakt/vim-silicon",
+			cmd = { "Silicon" },
+		})
 
 		-- index: t
 
@@ -1092,7 +1120,10 @@ return require("packer").startup({
 			ft = { "python" },
 		})
 
-		use({ "dstein64/vim-startuptime", cmd = { "StartupTime" } })
+		use({
+			"dstein64/vim-startuptime",
+			cmd = { "StartupTime" },
+		})
 
 		-- index: z
 
