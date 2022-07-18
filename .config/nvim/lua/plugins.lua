@@ -388,7 +388,9 @@ return require("packer").startup({
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			after = { "nvim-lspconfig" },
-			requires = { { "nvim-lua/plenary.nvim" } },
+			requires = {
+				{ "nvim-lua/plenary.nvim" },
+			},
 			config = function()
 				local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -994,7 +996,9 @@ return require("packer").startup({
 		use({
 			"nvim-telescope/telescope-frecency.nvim",
 			after = { "telescope.nvim" },
-			requires = { { "tami5/sqlite.lua" } },
+			requires = {
+				{ "tami5/sqlite.lua" },
+			},
 			config = function()
 				require("telescope").load_extension("frecency")
 			end,
@@ -1032,7 +1036,10 @@ return require("packer").startup({
 		use({
 			"nvim-telescope/telescope.nvim",
 			after = { "nvim-lspconfig" },
-			requires = { { "kyazdani42/nvim-web-devicons", opt = true }, { "nvim-lua/plenary.nvim" } },
+			requires = {
+				{ "kyazdani42/nvim-web-devicons", opt = true },
+				{ "nvim-lua/plenary.nvim" },
+			},
 			setup = function()
 				vim.keymap.set("n", "<leader><leader>", function()
 					require("telescope.builtin").buffers()
@@ -1077,7 +1084,9 @@ return require("packer").startup({
 		use({
 			"folke/trouble.nvim",
 			after = { "nvim-lspconfig" },
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+			requires = {
+				{ "kyazdani42/nvim-web-devicons", opt = true },
+			},
 			config = function()
 				require("trouble").setup()
 			end,
