@@ -401,7 +401,6 @@ return require("packer").startup({
 						require("null-ls").builtins.diagnostics.markdownlint,
 						require("null-ls").builtins.diagnostics.protolint,
 						require("null-ls").builtins.diagnostics.shellcheck,
-						require("null-ls").builtins.diagnostics.staticcheck,
 						require("null-ls").builtins.diagnostics.zsh,
 						-- formatting
 						require("null-ls").builtins.formatting.black,
