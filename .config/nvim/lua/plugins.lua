@@ -672,7 +672,6 @@ return require("packer").startup({
 					"gopls",
 					"jsonls",
 					"pyright",
-					"sqls",
 					"sumneko_lua",
 					"terraformls",
 					"tsserver",
