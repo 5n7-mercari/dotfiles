@@ -20,37 +20,37 @@ vim.opt.whichwrap:append("h")
 vim.opt.whichwrap:append("l")
 
 local disable_builtin_plugin = function(plugin)
-	vim.g["loaded_" .. plugin] = 1
+  vim.g["loaded_" .. plugin] = 1
 end
 
 local builtin_plugins = {
-	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
-	"matchit",
-	"netrwFileHandlers",
-	"netrwPlugin",
-	"netrwSettings",
-	"rrhelper",
-	"spellfile_plugin",
-	"tar",
-	"tarPlugin",
-	"vimball",
-	"vimballPlugin",
-	"zip",
-	"zipPlugin",
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "matchit",
+  "netrwFileHandlers",
+  "netrwPlugin",
+  "netrwSettings",
+  "rrhelper",
+  "spellfile_plugin",
+  "tar",
+  "tarPlugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
 }
 
 for _, plugin in pairs(builtin_plugins) do
-	disable_builtin_plugin(plugin)
+  disable_builtin_plugin(plugin)
 end
 
 local path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(path)) > 0 then
-	vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", path })
+  vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", path })
 end
 
 require("keymaps")
