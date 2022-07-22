@@ -4,7 +4,7 @@ vim.cmd([[
   augroup PackerUserConfig
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-    autocmd User PackerCompileDone lua vim.notify("[Packer] Compiled")
+    autocmd User PackerCompileDone lua vim.notify("[packer.nvim] Compiled")
   augroup END
 ]])
 
