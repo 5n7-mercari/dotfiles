@@ -68,7 +68,7 @@ return require("packer").startup({
       config = function()
         require("Comment").setup({})
       end,
-      event = { "VimEnter" },
+      event = { "CursorMoved" },
     })
 
     use({
@@ -124,7 +124,7 @@ return require("packer").startup({
       config = function()
         require("ftFT").setup()
       end,
-      event = { "VimEnter" },
+      keys = { "f", "F", "t", "T" },
     })
 
     use({
@@ -239,14 +239,6 @@ return require("packer").startup({
     })
 
     -- index: i
-
-    use({
-      "b0o/incline.nvim",
-      config = function()
-        require("incline").setup()
-      end,
-      event = { "VimEnter" },
-    })
 
     use({
       "lukas-reineke/indent-blankline.nvim",
@@ -1015,7 +1007,7 @@ return require("packer").startup({
 
     use({
       "tversteeg/registers.nvim",
-      event = { "VimEnter" },
+      keys = { '"' },
     })
 
     -- index: s
