@@ -36,16 +36,16 @@ return require("packer").startup({
 
     use({
       "rmagatti/auto-session",
-      setup = function()
-        vim.g.auto_session_pre_save_cmds = { "NvimTreeClose" }
-        vim.opt.sessionoptions:append({ "folds", "terminal", "winpos" })
-      end,
       config = function()
         require("auto-session").setup({
           auto_save_enabled = true,
           auto_restore_enabled = true,
           auto_session_suppress_dirs = { "~" },
         })
+      end,
+      setup = function()
+        vim.g.auto_session_pre_save_cmds = { "NvimTreeClose" }
+        vim.opt.sessionoptions:append({ "folds", "terminal", "winpos" })
       end,
     })
 
