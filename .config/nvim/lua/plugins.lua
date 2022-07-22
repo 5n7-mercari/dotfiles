@@ -348,6 +348,14 @@ return require("packer").startup({
     -- index: m
 
     use({
+      "williamboman/mason.nvim",
+      config = function()
+        require("mason").setup({})
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
       "declancm/maximize.nvim",
       config = function()
         require("maximize").setup()
