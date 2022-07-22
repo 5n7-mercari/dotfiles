@@ -165,7 +165,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>")
       end,
-      event = { "VimEnter" },
+      cmd = { "Gitsigns" },
     })
 
     use({
@@ -380,7 +380,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>gc", "<cmd>Neogit commit<cr>")
       end,
-      event = { "VimEnter" },
+      cmd = { "Neogit" },
     })
 
     use({
@@ -860,6 +860,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
       end,
+      cmd = { "NvimTreeToggle" },
     })
 
     use({
@@ -988,7 +989,7 @@ return require("packer").startup({
       config = function()
         require("octo").setup()
       end,
-      event = { "VimEnter" },
+      cmd = { "Octo" },
     })
 
     -- index: p
@@ -1115,7 +1116,6 @@ return require("packer").startup({
 
     use({
       "folke/trouble.nvim",
-      after = { "nvim-lspconfig" },
       requires = {
         { "kyazdani42/nvim-web-devicons", opt = true },
       },
@@ -1125,6 +1125,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>dx", "<cmd>TroubleToggle document_diagnostics<cr>")
       end,
+      cmd = { "TroubleToggle" },
     })
 
     -- index: u
@@ -1137,6 +1138,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>uv", "<cmd>UrlView<cr>")
       end,
+      cmd = { "UrlView" },
     })
 
     -- index: v
@@ -1149,7 +1151,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>gh", "<cmd>VGit buffer_history_preview<cr>")
       end,
-      event = { "VimEnter" },
+      cmd = { "VGit" },
     })
 
     use({
