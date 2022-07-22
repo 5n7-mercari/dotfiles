@@ -621,6 +621,24 @@ return require("packer").startup({
     })
 
     use({
+      "mfussenegger/nvim-dap",
+      setup = function()
+        vim.keymap.set("n", "<leader>b", function()
+          require("dap").toggle_breakpoint()
+        end)
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
+      "rcarriga/nvim-dap-ui",
+      after = { "nvim-dap" },
+      config = function()
+        require("dapui").setup()
+      end,
+    })
+
+    use({
       "booperlv/nvim-gomove",
       config = function()
         require("gomove").setup({
