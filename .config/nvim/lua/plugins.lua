@@ -796,6 +796,14 @@ return require("packer").startup({
     })
 
     use({
+      "xiyaowong/nvim-transparent",
+      config = function()
+        require("transparent").setup()
+      end,
+      cmd = { "TransparentToggle" },
+    })
+
+    use({
       "kyazdani42/nvim-tree.lua",
       requires = {
         { "kyazdani42/nvim-web-devicons", opt = true },
