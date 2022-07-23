@@ -187,7 +187,6 @@ return require("packer").startup({
       end,
       setup = function()
         vim.keymap.set("n", "<leader>fs", "<cmd>GoFillStruct<cr>")
-        vim.keymap.set("n", "<leader>gt", "<cmd>GoTestFunc<cr>")
       end,
       cmd = { "GoUpdateBinaries" },
       ft = { "go" },
@@ -751,6 +750,30 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
       end,
+    })
+
+    use({
+      "nvim-neotest/neotest",
+      after = { "nvim-treesitter" },
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-neotest/neotest-go" },
+        { "nvim-neotest/neotest-python" },
+      },
+      config = function()
+        require("neotest").setup({
+          adapters = {
+            require("neotest-go"),
+            require("neotest-python"),
+          },
+        })
+      end,
+      setup = function()
+        vim.keymap.set("n", "<leader>tf", function()
+          require("neotest").run.run()
+        end)
+      end,
+      ft = { "go", "python" },
     })
 
     use({
