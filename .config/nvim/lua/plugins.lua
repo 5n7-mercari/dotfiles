@@ -165,7 +165,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>")
       end,
-      cmd = { "Gitsigns" },
+      event = { "VimEnter" },
     })
 
     use({
