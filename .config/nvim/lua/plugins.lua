@@ -241,6 +241,7 @@ return require("packer").startup({
 
     use({
       "lukas-reineke/indent-blankline.nvim",
+      after = { "nvim-treesitter" },
       config = function()
         require("indent_blankline").setup({
           filetype_exclude = { "alpha" },
