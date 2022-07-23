@@ -300,6 +300,14 @@ return require("packer").startup({
             lualine_y = {},
             lualine_z = {},
           },
+          tabline = {
+            lualine_a = {},
+            lualine_b = { "buffers" },
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = {},
+          },
           extensions = {
             {
               sections = { lualine_b = { { "filetype" } } },
@@ -567,32 +575,6 @@ return require("packer").startup({
         })
       end,
       event = { "CmdlineEnter", "InsertEnter" },
-    })
-
-    use({
-      "noib3/nvim-cokeline",
-      after = { "tokyonight.nvim" },
-      requires = {
-        { "kyazdani42/nvim-web-devicons", opt = true },
-      },
-      config = function()
-        require("cokeline").setup()
-      end,
-      setup = function()
-        vim.keymap.set("n", "<m-h>", "<plug>(cokeline-focus-prev)")
-        vim.keymap.set("n", "<m-l>", "<plug>(cokeline-focus-next)")
-
-        vim.keymap.set("n", "<m-1>", "<plug>(cokeline-focus-1)")
-        vim.keymap.set("n", "<m-2>", "<plug>(cokeline-focus-2)")
-        vim.keymap.set("n", "<m-3>", "<plug>(cokeline-focus-3)")
-        vim.keymap.set("n", "<m-4>", "<plug>(cokeline-focus-4)")
-        vim.keymap.set("n", "<m-5>", "<plug>(cokeline-focus-5)")
-        vim.keymap.set("n", "<m-6>", "<plug>(cokeline-focus-6)")
-        vim.keymap.set("n", "<m-7>", "<plug>(cokeline-focus-7)")
-        vim.keymap.set("n", "<m-8>", "<plug>(cokeline-focus-8)")
-        vim.keymap.set("n", "<m-9>", "<plug>(cokeline-focus-9)")
-        vim.keymap.set("n", "<m-0>", "<plug>(cokeline-focus-10)")
-      end,
     })
 
     use({
