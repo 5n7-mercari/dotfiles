@@ -19,10 +19,6 @@ apply = ["defer"]
 github = "Aloxaf/fzf-tab"
 apply = ["defer"]
 
-[plugins.ugit]
-github = "Bhupesh-V/ugit"
-apply = ["defer"]
-
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 apply = ["defer"]
