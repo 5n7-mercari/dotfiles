@@ -11,9 +11,9 @@ if hash "direnv" >/dev/null 2>&1; then
 	eval "$(direnv hook zsh)"
 fi
 
-# if [[ -n $(brew --prefix pure) ]]; then
-# 	autoload -U promptinit && promptinit && prompt pure
-# fi
+if hash "sheldon" >/dev/null 2>&1; then
+	eval "$(sheldon source)"
+fi
 
 if hash "starship" >/dev/null 2>&1; then
 	eval "$(starship init zsh)"

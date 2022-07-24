@@ -1,0 +1,39 @@
+shell = "zsh"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[plugins.cd-gitroot]
+github = "mollifier/cd-gitroot"
+apply = ["defer"]
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.forgit]
+github = "wfxr/forgit"
+apply = ["defer"]
+
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
+apply = ["defer"]
+
+[plugins.ugit]
+github = "Bhupesh-V/ugit"
+apply = ["defer"]
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
+
+[plugins.zsh-poetry]
+github = "darvid/zsh-poetry"
+apply = ["defer"]
+
+[plugins.zsh-z]
+github = "agkozak/zsh-z"
+apply = ["defer"]
+
+[templates]
+defer = { value = "zsh-defer source '{{ file }}'", each = true }
