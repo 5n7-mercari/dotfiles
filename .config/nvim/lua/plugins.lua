@@ -647,6 +647,11 @@ return require("packer").startup({
     })
 
     use({
+      "Iron-E/nvim-libmodal",
+      event = { "VimEnter" },
+    })
+
+    use({
       "williamboman/nvim-lsp-installer",
       event = { "VimEnter" },
     })
