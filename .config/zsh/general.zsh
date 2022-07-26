@@ -1,4 +1,3 @@
-setopt auto_cd
 setopt auto_list
 setopt auto_menu
 setopt auto_param_keys
