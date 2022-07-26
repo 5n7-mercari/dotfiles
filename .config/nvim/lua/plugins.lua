@@ -284,6 +284,10 @@ return require("packer").startup({
           options = {
             globalstatus = 3,
             theme = "tokyonight",
+            refresh = {
+              statusline = 100,
+              tabline = 100,
+            },
           },
           sections = {
             lualine_a = { { "mode" } },
