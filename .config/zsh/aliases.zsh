@@ -1,4 +1,4 @@
-alias s="source "$ZDOTDIR/.zshrc" && source "$HOME/.zshenv""
+alias s='source '"$ZDOTDIR"/.zshrc' && source '$HOME/.zshenv''
 
 alias -g G="| grep"
 alias -g H="| head"
@@ -11,21 +11,12 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-alias ghhome="cd "$HOME/src/github.com/${GITHUB_USER:-5n7}""
+alias ghhome="cd '"$HOME"/src/github.com/${GITHUB_USER:-5n7}'"
 
-if [ -d "$HOME/Downloads" ]; then
-	alias dl="cd "$HOME/Downloads""
-fi
-
-if [ -d "$HOME/Dropbox" ]; then
-	alias dr="cd "$HOME/Dropbox""
-fi
-
-if [ -d "$HOME/sandbox" ]; then
-	alias sb="cd "$HOME/sandbox""
-fi
-
-alias h="history -i"
+[[ -d "$HOME/Downloads" ]] && alias dl="cd "$HOME/Downloads""
+[[ -d "$HOME/Dropbox" ]] && alias dr="cd "$HOME/Dropbox""
+[[ -d "$HOME/Pictures" ]] && alias pi="cd "$HOME/Pictures""
+[[ -d "$HOME/sandbox" ]] && alias sb="cd "$HOME/sandbox""
 
 alias cp="cp -ir"
 alias mkdir="mkdir -p"
@@ -33,10 +24,26 @@ alias mv="mv -i"
 
 if hash "docker" >/dev/null 2>&1; then
 	alias d="docker"
-	alias dcl="docker container prune -f && docker image prune -f"
 	alias dim="docker images"
 	alias dps="docker ps"
 	alias dpsa="docker ps -a"
+
+	if hash "fzf" >/dev/null 2>&1; then
+		fzf::docker-remove-images() {
+			local images="$(docker images | tail +2 | sort | fzf --multi | awk '{print $3}')"
+			[[ -z "$images" ]] && return
+			docker rmi $(echo "$images" | tr "\n" " ")
+		}
+		alias fzfdri="fzf::docker-remove-images"
+
+		fzf::docker-run-container() {
+			local image="$(docker images | tail +2 | sort | fzf | awk '{print $3}')"
+			echo -n "command: "
+			read command
+			docker run -it --rm "$image" "$command"
+		}
+		alias fzfdrc="fzf::docker-run-container"
+	fi
 fi
 
 if hash "docker-compose" >/dev/null 2>&1; then
@@ -48,9 +55,6 @@ if hash "lsd" >/dev/null 2>&1; then
 	alias la="lsd -la"
 	alias ls="lsd -l"
 	alias tree="lsd --tree"
-else
-	alias l="ls -l"
-	alias la="ls -al"
 fi
 
 if hash "git" >/dev/null 2>&1; then
@@ -113,8 +117,6 @@ fi
 if hash "python" >/dev/null 2>&1; then
 	alias pipup="pip install --upgrade pip"
 	alias py="python"
-	alias py2="python2"
-	alias py3="python3"
 	alias venv="python -m venv .venv && source .venv/bin/activate"
 fi
 
@@ -130,15 +132,6 @@ if hash "tmux" >/dev/null 2>&1; then
 	alias tt="tmux attach -t default || tmux new -s default"
 fi
 
-if hash "xclip" >/dev/null 2>&1; then
-	alias pbc="xclip -selection clipboard -in"
-	alias pbp="xclip -selection clipboard -out"
-fi
-
-ghg() {
-	curl -Ls https://api.github.com/repos/$1/releases/latest | jq -r ".assets[].browser_download_url" | fzf | wget -i -
-}
-
 mkcd() {
 	mkdir -p $1
 	cd $1
@@ -146,8 +139,4 @@ mkcd() {
 
 targz() {
 	tar -cvzf $1.tar.gz $1
-}
-
-today() {
-	date +'%Y%m%d'
 }
