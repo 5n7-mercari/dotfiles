@@ -329,7 +329,7 @@ return require("packer").startup({
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       after = { "nvim-lspconfig" },
       config = function()
-        require("lsp_lines").register_lsp_virtual_lines()
+        require("lsp_lines").setup()
       end,
       setup = function()
         vim.diagnostic.config({
