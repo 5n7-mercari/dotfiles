@@ -326,7 +326,7 @@ return require("packer").startup({
     -- index: l
 
     use({
-      "Maan2003/lsp_lines.nvim",
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       after = { "nvim-lspconfig" },
       config = function()
         require("lsp_lines").register_lsp_virtual_lines()
@@ -336,7 +336,7 @@ return require("packer").startup({
           virtual_text = false,
         })
         vim.keymap.set("n", "<leader>vl", function()
-          vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+          require("lsp_lines").toggle()
         end)
       end,
     })
