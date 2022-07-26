@@ -13,7 +13,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # Homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
-# asdf 
+# asdf
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 
 # Docker
