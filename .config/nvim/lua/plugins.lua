@@ -1112,7 +1112,7 @@ return require("packer").startup({
     use({
       "folke/tokyonight.nvim",
       config = function()
-        vim.cmd("colorscheme tokyonight")
+        vim.cmd.colorscheme("tokyonight")
       end,
       setup = function()
         vim.g.tokyonight_italic_keywords = false
