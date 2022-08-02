@@ -1087,6 +1087,9 @@ return require("packer").startup({
         vim.keymap.set("n", "<leader>ff", function()
           require("telescope.builtin").find_files({ hidden = true })
         end)
+        vim.keymap.set("n", "<leader>jl", function()
+          require("telescope.builtin").jumplist()
+        end)
         vim.keymap.set("n", "<leader>lg", function()
           require("telescope.builtin").live_grep({
             additional_args = function()
