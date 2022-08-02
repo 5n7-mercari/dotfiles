@@ -1,9 +1,9 @@
 vim.keymap.set("i", "jj", "<esc>")
 
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("n", "k", "gk")
-vim.keymap.set("n", "gj", "j")
-vim.keymap.set("n", "gk", "k")
+vim.keymap.set({ "n", "v" }, "j", "gj")
+vim.keymap.set({ "n", "v" }, "k", "gk")
+vim.keymap.set({ "n", "v" }, "gj", "j")
+vim.keymap.set({ "n", "v" }, "gk", "k")
 
 vim.keymap.set("n", "sh", "<c-w>s")
 vim.keymap.set("n", "sv", "<c-w>v")
