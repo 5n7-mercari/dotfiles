@@ -1,4 +1,5 @@
-HISTFILE="$XDG_STATE_HOME/zsh_history"
+[[ ! -d "$XDG_STATE_HOME/zsh" ]] && mkdir -p "$XDG_STATE_HOME/zsh"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=100000
 SAVEHIST=1000000
 

@@ -34,7 +34,6 @@ export PATH="$DOTFILES/bin:$PATH"
 export GHQ_ROOT="$HOME/src"
 
 # Zsh
-export HISTFILE="XDG_STATE_HOME/zsh/history"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Zsh-z
