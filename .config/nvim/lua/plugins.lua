@@ -662,7 +662,7 @@ return require("packer").startup({
 
     use({
       "neovim/nvim-lspconfig",
-      after = { "lsp_signature.nvim", "mason-lspconfig.nvim", "mason.nvim" },
+      after = { "cmp-nvim-lsp", "lsp_signature.nvim", "mason-lspconfig.nvim" },
       config = function()
         require("mason-lspconfig").setup({
           ensure_installed = {
@@ -681,6 +681,9 @@ return require("packer").startup({
 
         require("mason-lspconfig").setup_handlers({
           function(server)
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
             local on_attach = function(_, buffer)
               vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
               vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
@@ -688,7 +691,7 @@ return require("packer").startup({
               vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { buffer = buffer })
             end
 
-            local opts = { on_attach = on_attach }
+            local opts = { capabilities = capabilities, on_attach = on_attach }
 
             if server == "gopls" then
               opts.on_attach = function(client, buffer)
