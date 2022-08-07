@@ -352,9 +352,14 @@ return require("packer").startup({
     -- index: m
 
     use({
+      "williamboman/mason-lspconfig.nvim",
+      event = { "VimEnter" },
+    })
+
+    use({
       "williamboman/mason.nvim",
       config = function()
-        require("mason").setup({})
+        require("mason").setup()
       end,
       event = { "VimEnter" },
     })
@@ -656,88 +661,77 @@ return require("packer").startup({
     })
 
     use({
-      "williamboman/nvim-lsp-installer",
-      event = { "VimEnter" },
-    })
-
-    use({
       "neovim/nvim-lspconfig",
-      after = { "lsp_signature.nvim", "nvim-lsp-installer" },
+      after = { "lsp_signature.nvim", "mason-lspconfig.nvim", "mason.nvim" },
       config = function()
-        local installer = require("nvim-lsp-installer.servers")
+        require("mason-lspconfig").setup({
+          ensure_installed = {
+            "bashls",
+            "clangd",
+            "dockerls",
+            "gopls",
+            "jsonls",
+            "pyright",
+            "sumneko_lua",
+            "terraformls",
+            "tsserver",
+            "vimls",
+          },
+        })
 
-        local on_attach = function(_, buffer)
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buffer })
-          vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { buffer = buffer })
-        end
-
-        local servers = {
-          "bashls",
-          "clangd",
-          "dockerls",
-          "gopls",
-          "jsonls",
-          "pyright",
-          "sumneko_lua",
-          "terraformls",
-          "tsserver",
-          "vimls",
-        }
-
-        for _, server_name in pairs(servers) do
-          local ok, server = installer.get_server(server_name)
-          if ok then
-            server:on_ready(function()
-              local opts = { on_attach = on_attach }
-
-              if server_name == "gopls" then
-                opts.on_attach = function(client, buffer)
-                  on_attach(client, buffer)
-                  client.server_capabilities.document_formatting = false
-                  client.server_capabilities.document_range_formatting = false
-                end
-              end
-
-              if server_name == "sumneko_lua" then
-                opts.on_attach = function(client, buffer)
-                  on_attach(client, buffer)
-                  client.server_capabilities.document_formatting = false
-                  client.server_capabilities.document_range_formatting = false
-                end
-                opts.settings = {
-                  Lua = {
-                    diagnostics = {
-                      globals = { "vim" },
-                    },
-                  },
-                }
-              end
-
-              if server_name == "sqls" then
-                opts.on_attach = function(client, buffer)
-                  on_attach(client, buffer)
-                  client.server_capabilities.document_formatting = false
-                  client.server_capabilities.document_range_formatting = false
-                end
-              end
-
-              if server_name == "tsserver" then
-                opts.on_attach = function(client, buffer)
-                  on_attach(client, buffer)
-                  client.server_capabilities.document_formatting = false
-                  client.server_capabilities.document_range_formatting = false
-                end
-              end
-
-              server:setup(opts)
-            end)
-            if not server:is_installed() then
-              server:install()
+        require("mason-lspconfig").setup_handlers({
+          function(server)
+            local on_attach = function(_, buffer)
+              vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
+              vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
+              vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buffer })
+              vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { buffer = buffer })
             end
-          end
-        end
+
+            local opts = { on_attach = on_attach }
+
+            if server == "gopls" then
+              opts.on_attach = function(client, buffer)
+                on_attach(client, buffer)
+                client.server_capabilities.document_formatting = false
+                client.server_capabilities.document_range_formatting = false
+              end
+            end
+
+            if server == "sumneko_lua" then
+              opts.on_attach = function(client, buffer)
+                on_attach(client, buffer)
+                client.server_capabilities.document_formatting = false
+                client.server_capabilities.document_range_formatting = false
+              end
+              opts.settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                },
+              }
+            end
+
+            if server == "sqls" then
+              opts.on_attach = function(client, buffer)
+                on_attach(client, buffer)
+                client.server_capabilities.document_formatting = false
+                client.server_capabilities.document_range_formatting = false
+              end
+            end
+
+            if server == "tsserver" then
+              opts.on_attach = function(client, buffer)
+                on_attach(client, buffer)
+                client.server_capabilities.document_formatting = false
+                client.server_capabilities.document_range_formatting = false
+              end
+            end
+
+            require("lspconfig")[server].setup(opts)
+          end,
+        })
       end,
       setup = function()
         vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
