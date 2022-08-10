@@ -20,6 +20,8 @@ vim.keymap.set("n", "<m-L>", "<cmd>vertical resize +10<cr>")
 
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 
+vim.keymap.set("n", "<m-h>", "<cmd>bprev<cr>")
+vim.keymap.set("n", "<m-l>", "<cmd>bnext<cr>")
 vim.keymap.set("n", "<c-t>n", "<cmd>tabnew<cr>")
 
 vim.keymap.set("n", "<leader>q", "<cmd>q!<cr>")
