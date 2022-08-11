@@ -517,6 +517,14 @@ return require("packer").startup({
               luasnip.lsp_expand(args.body)
             end,
           },
+          window = {
+            completion = {
+              border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            },
+            documentation = {
+              border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            },
+          },
           mapping = {
             ["<c-e>"] = cmp.mapping({ c = cmp.mapping.close(), i = cmp.mapping.abort() }),
             ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "c", "i" }),
