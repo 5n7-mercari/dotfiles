@@ -365,14 +365,6 @@ return require("packer").startup({
     })
 
     use({
-      "declancm/maximize.nvim",
-      config = function()
-        require("maximize").setup()
-      end,
-      event = { "VimEnter" },
-    })
-
-    use({
       "mvllow/modes.nvim",
       config = function()
         require("modes").setup()
@@ -1133,6 +1125,14 @@ return require("packer").startup({
         vim.keymap.set("n", "<leader>dx", "<cmd>TroubleToggle document_diagnostics<cr>")
       end,
       cmd = { "TroubleToggle" },
+    })
+
+    use({
+      "Pocco81/true-zen.nvim",
+      config = function()
+        require("true-zen").setup()
+      end,
+      cmd = { "TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow" },
     })
 
     -- index: u
