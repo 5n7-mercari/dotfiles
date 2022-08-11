@@ -64,6 +64,22 @@ return require("packer").startup({
     -- index: c
 
     use({
+      "catppuccin/nvim",
+      as = "catppuccin",
+      config = function()
+        require("catppuccin").setup({
+          integrations = {
+            hop = true,
+          },
+        })
+        vim.cmd.colorscheme("catppuccin")
+      end,
+      setup = function()
+        vim.g.catppuccin_flavour = "mocha"
+      end,
+    })
+
+    use({
       "numToStr/Comment.nvim",
       config = function()
         require("Comment").setup({})
@@ -275,7 +291,7 @@ return require("packer").startup({
 
     use({
       "nvim-lualine/lualine.nvim",
-      after = { "nvim-gps", "tokyonight.nvim" },
+      after = { "catppuccin", "nvim-gps" },
       requires = {
         { "kyazdani42/nvim-web-devicons", opt = true },
       },
@@ -283,7 +299,7 @@ return require("packer").startup({
         require("lualine").setup({
           options = {
             globalstatus = 3,
-            theme = "tokyonight",
+            theme = "catppuccin",
             refresh = {
               statusline = 100,
               tabline = 100,
@@ -1099,18 +1115,6 @@ return require("packer").startup({
         end)
       end,
       event = { "VimEnter" },
-    })
-
-    use({
-      "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd.colorscheme("tokyonight")
-      end,
-      setup = function()
-        vim.g.tokyonight_italic_keywords = false
-        vim.g.tokyonight_style = "night"
-        vim.opt.termguicolors = true
-      end,
     })
 
     use({
