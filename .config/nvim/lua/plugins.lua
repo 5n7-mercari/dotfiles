@@ -551,7 +551,6 @@ return require("packer").startup({
           },
           formatting = {
             format = require("lspkind").cmp_format({
-              with_text = true,
               menu = {
                 buffer = "[Buffer]",
                 calc = "[Calc]",
