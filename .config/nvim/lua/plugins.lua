@@ -414,16 +414,6 @@ return require("packer").startup({
     })
 
     use({
-      "karb94/neoscroll.nvim",
-      config = function()
-        require("neoscroll").setup({
-          mappings = { "<c-d>", "<c-e>", "<c-u>", "<c-y>" },
-        })
-      end,
-      event = { "VimEnter" },
-    })
-
-    use({
       "jose-elias-alvarez/null-ls.nvim",
       after = { "nvim-lspconfig" },
       requires = {
