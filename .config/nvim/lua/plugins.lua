@@ -358,6 +358,18 @@ return require("packer").startup({
     })
 
     use({
+      "glepnir/lspsaga.nvim",
+      config = function()
+        require("lspsaga").init_lsp_saga()
+      end,
+      setup = function()
+        vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<cr>")
+        vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+      end,
+      cmd = { "Lspsaga" },
+    })
+
+    use({
       "L3MON4D3/LuaSnip",
       after = { "friendly-snippets" },
       config = function()
