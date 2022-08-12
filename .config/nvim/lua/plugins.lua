@@ -996,6 +996,9 @@ return require("packer").startup({
     use({
       "haringsrob/nvim_context_vt",
       after = { "nvim-treesitter" },
+      setup = function()
+        vim.keymap.set("n", "<leader>ct", "<cmd>NvimContextVtToggle<cr>")
+      end,
     })
 
     -- index: o
