@@ -1047,12 +1047,6 @@ return require("packer").startup({
       keys = { '"' },
     })
 
-    -- index: s
-    use({
-      "segeljakt/vim-silicon",
-      cmd = { "Silicon" },
-    })
-
     -- index: t
 
     use({
@@ -1192,6 +1186,11 @@ return require("packer").startup({
         vim.g.pydocstring_formatter = "google"
       end,
       ft = { "python" },
+    })
+
+    use({
+      "segeljakt/vim-silicon",
+      cmd = { "Silicon" },
     })
 
     use({
