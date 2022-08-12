@@ -728,6 +728,14 @@ return require("packer").startup({
               end
             end
 
+            if server == "sqls" then
+              opts.on_attach = function(client, buffer)
+                on_attach(client, buffer)
+                client.server_capabilities.document_formatting = false
+                client.server_capabilities.document_range_formatting = false
+              end
+            end
+
             if server == "sumneko_lua" then
               opts.on_attach = function(client, buffer)
                 on_attach(client, buffer)
@@ -747,14 +755,6 @@ return require("packer").startup({
                   },
                 },
               }
-            end
-
-            if server == "sqls" then
-              opts.on_attach = function(client, buffer)
-                on_attach(client, buffer)
-                client.server_capabilities.document_formatting = false
-                client.server_capabilities.document_range_formatting = false
-              end
             end
 
             if server == "tsserver" then
