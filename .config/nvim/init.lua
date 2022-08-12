@@ -53,5 +53,6 @@ if vim.fn.empty(vim.fn.glob(path)) > 0 then
   vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", path })
 end
 
+require("autocmds")
 require("keymaps")
 require("plugins")
