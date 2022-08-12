@@ -968,14 +968,6 @@ return require("packer").startup({
     })
 
     use({
-      "romgrk/nvim-treesitter-context",
-      after = { "nvim-treesitter" },
-      config = function()
-        require("treesitter-context").setup()
-      end,
-    })
-
-    use({
       "nvim-treesitter/nvim-treesitter-textobjects",
       after = { "nvim-treesitter" },
       config = function()
