@@ -210,7 +210,7 @@ return require("packer").startup({
 
     use({
       "edolphin-ydf/goimpl.nvim",
-      after = { "nvim-treesitter", "telescope.nvim" },
+      after = { "nvim-lspconfig", "nvim-treesitter", "telescope.nvim" },
       config = function()
         require("telescope").load_extension("goimpl")
       end,
@@ -397,6 +397,7 @@ return require("packer").startup({
       config = function()
         require("modes").setup()
       end,
+      event = { "VimEnter" },
     })
 
     -- index: n
@@ -489,6 +490,7 @@ return require("packer").startup({
           },
         })
       end,
+      event = { "BufEnter" },
     })
 
     use({
