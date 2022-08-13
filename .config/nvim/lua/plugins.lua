@@ -381,7 +381,7 @@ return require("packer").startup({
 
     use({
       "williamboman/mason-lspconfig.nvim",
-      event = { "VimEnter" },
+      after = { "mason.nvim" },
     })
 
     use({
