@@ -256,6 +256,10 @@ return require("packer").startup({
     -- index: i
 
     use({
+      "lewis6991/impatient.nvim",
+    })
+
+    use({
       "lukas-reineke/indent-blankline.nvim",
       after = { "nvim-treesitter" },
       config = function()
