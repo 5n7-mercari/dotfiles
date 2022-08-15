@@ -1,6 +1,6 @@
 alias s='source '"$ZDOTDIR"/.zshrc' && source '$HOME/.zshenv''
 
-alias -g G="| grep"
+alias -g G="| grep --color=auto"
 alias -g H="| head"
 alias -g L="| less"
 alias -g T="| tail"
