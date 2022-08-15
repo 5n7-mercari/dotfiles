@@ -1089,6 +1089,14 @@ return require("packer").startup({
     })
 
     use({
+      "benfowler/telescope-luasnip.nvim",
+      after = { "telescope.nvim" },
+      config = function()
+        require("telescope").load_extension("luasnip")
+      end,
+    })
+
+    use({
       "nvim-telescope/telescope.nvim",
       after = { "nvim-lspconfig" },
       requires = {
