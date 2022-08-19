@@ -19,6 +19,7 @@ vim.keymap.set("n", "<m-K>", "<cmd>resize -5<cr>")
 vim.keymap.set("n", "<m-L>", "<cmd>vertical resize +10<cr>")
 
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
+vim.keymap.set({ "n", "v" }, "<leader>x", '"_x')
 
 vim.keymap.set("n", "<m-h>", "<cmd>bprev<cr>")
 vim.keymap.set("n", "<m-l>", "<cmd>bnext<cr>")
