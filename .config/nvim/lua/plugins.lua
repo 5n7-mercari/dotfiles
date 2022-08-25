@@ -821,6 +821,25 @@ return require("packer").startup({
     })
 
     use({
+      "nguyenvukhang/nvim-toggler",
+      config = function()
+        require("nvim-toggler").setup({
+          inverses = {
+            ["before"] = "after",
+            ["on"] = "off",
+            ["true"] = "false",
+            ["yes"] = "no",
+          },
+          remove_default_keybinds = true,
+        })
+      end,
+      setup = function()
+        vim.keymap.set({ "n", "v" }, "<leader>tg", require("nvim-toggler").toggle)
+      end,
+      event = { "CursorMoved" },
+    })
+
+    use({
       "akinsho/nvim-toggleterm.lua",
       config = function()
         require("toggleterm").setup({ open_mapping = "<c-t>t", direction = "float" })
