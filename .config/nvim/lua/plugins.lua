@@ -418,6 +418,30 @@ return require("packer").startup({
     })
 
     use({
+      "nvim-neotest/neotest",
+      after = { "nvim-treesitter" },
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-neotest/neotest-go" },
+        { "nvim-neotest/neotest-python" },
+      },
+      config = function()
+        require("neotest").setup({
+          adapters = {
+            require("neotest-go"),
+            require("neotest-python"),
+          },
+        })
+      end,
+      setup = function()
+        vim.keymap.set("n", "<leader>tf", function()
+          require("neotest").run.run()
+        end)
+      end,
+      ft = { "go", "python" },
+    })
+
+    use({
       "jose-elias-alvarez/null-ls.nvim",
       after = { "nvim-lspconfig" },
       requires = {
@@ -768,30 +792,6 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
       end,
-    })
-
-    use({
-      "nvim-neotest/neotest",
-      after = { "nvim-treesitter" },
-      requires = {
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-neotest/neotest-go" },
-        { "nvim-neotest/neotest-python" },
-      },
-      config = function()
-        require("neotest").setup({
-          adapters = {
-            require("neotest-go"),
-            require("neotest-python"),
-          },
-        })
-      end,
-      setup = function()
-        vim.keymap.set("n", "<leader>tf", function()
-          require("neotest").run.run()
-        end)
-      end,
-      ft = { "go", "python" },
     })
 
     use({
