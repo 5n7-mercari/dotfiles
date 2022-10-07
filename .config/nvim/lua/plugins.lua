@@ -36,6 +36,7 @@ return require("packer").startup({
 
     use({
       "rmagatti/auto-session",
+      after = { "git-conflict.nvim" },
       config = function()
         require("auto-session").setup({
           auto_save_enabled = true,
