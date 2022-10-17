@@ -110,7 +110,7 @@ if hash "poetry" >/dev/null 2>&1; then
 	alias popup="poetry run pip install --upgrade pip"
 
 	pdev() {
-		poetry add -D black flake8 isort poethepoet pytest
+		poetry add --group dev black flake8 isort poethepoet pytest
 	}
 fi
 
