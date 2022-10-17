@@ -27,5 +27,6 @@ vim.keymap.set("n", "<c-t>n", "<cmd>tabnew<cr>")
 
 vim.keymap.set("n", "<leader>q", "<cmd>q!<cr>")
 vim.keymap.set("n", "<leader>w", "<cmd>wa<cr>")
+vim.keymap.set("n", "<leader>W", "<cmd>noa wa<cr>")
 
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
