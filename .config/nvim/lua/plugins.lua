@@ -81,6 +81,18 @@ return require("packer").startup({
     })
 
     use({
+      "tkmpypy/chowcho.nvim",
+      requires = {
+        { "kyazdani42/nvim-web-devicons", opt = true },
+      },
+      setup = function()
+        vim.keymap.set("n", "<leader>wp", function()
+          require("chowcho").run()
+        end)
+      end,
+    })
+
+    use({
       "numToStr/Comment.nvim",
       config = function()
         require("Comment").setup({})
