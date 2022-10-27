@@ -359,6 +359,14 @@ return require("packer").startup({
     -- index: l
 
     use({
+      "lukas-reineke/lsp-format.nvim",
+      config = function()
+        require("lsp-format").setup()
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       after = { "nvim-lspconfig" },
       config = function()
@@ -462,8 +470,6 @@ return require("packer").startup({
         { "nvim-lua/plenary.nvim" },
       },
       config = function()
-        local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
         require("null-ls").setup({
           sources = {
             -- diagnostics
@@ -485,16 +491,9 @@ return require("packer").startup({
             require("null-ls").builtins.formatting.terraform_fmt,
             require("null-ls").builtins.formatting.trim_newlines,
           },
-          on_attach = function(client, buffer)
+          on_attach = function(client, _)
             if client.supports_method("textDocument/formatting") then
-              vim.api.nvim_clear_autocmds({ group = augroup, buffer = buffer })
-              vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = buffer,
-                callback = function()
-                  vim.lsp.buf.format({ bufnr = buffer })
-                end,
-              })
+              require("lsp-format").on_attach(client)
             end
           end,
         })
@@ -720,7 +719,7 @@ return require("packer").startup({
 
     use({
       "neovim/nvim-lspconfig",
-      after = { "cmp-nvim-lsp", "lsp_signature.nvim", "mason-lspconfig.nvim" },
+      after = { "cmp-nvim-lsp", "lsp-format.nvim", "lsp_signature.nvim", "mason-lspconfig.nvim" },
       config = function()
         require("mason-lspconfig").setup({
           ensure_installed = {
@@ -740,7 +739,9 @@ return require("packer").startup({
         require("mason-lspconfig").setup_handlers({
           function(server)
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local on_attach = function(_, buffer)
+            local on_attach = function(client, buffer)
+              require("lsp-format").on_attach(client)
+
               vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
               vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
               vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buffer })
