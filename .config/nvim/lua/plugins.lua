@@ -709,6 +709,9 @@ return require("packer").startup({
 
     use({
       "kevinhwang91/nvim-hlslens",
+      config = function()
+        require("hlslens").setup()
+      end,
       event = { "CmdLineEnter" },
     })
 
