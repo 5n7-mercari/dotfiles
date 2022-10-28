@@ -2,6 +2,7 @@ pcall(require, "impatient")
 
 vim.g.mapleader = " "
 
+vim.opt.cmdheight = 0
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.expandtab = true
 vim.opt.list = true

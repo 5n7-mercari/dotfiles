@@ -464,6 +464,18 @@ return require("packer").startup({
     })
 
     use({
+      "folke/noice.nvim",
+      requires = {
+        { "MunifTanjim/nui.nvim" },
+        { "rcarriga/nvim-notify", opt = true },
+      },
+      config = function()
+        require("noice").setup()
+      end,
+      event = { "CmdlineEnter" },
+    })
+
+    use({
       "jose-elias-alvarez/null-ls.nvim",
       after = { "nvim-lspconfig" },
       requires = {
