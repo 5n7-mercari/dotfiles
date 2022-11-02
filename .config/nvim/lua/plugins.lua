@@ -93,6 +93,14 @@ return require("packer").startup({
     })
 
     use({
+      "nvim-zh/colorful-winsep.nvim",
+      config = function()
+        require("colorful-winsep").setup({})
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
       "numToStr/Comment.nvim",
       config = function()
         require("Comment").setup({})
