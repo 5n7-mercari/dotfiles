@@ -477,7 +477,7 @@ return require("packer").startup({
       config = function()
         require("noice").setup()
       end,
-      event = { "CmdlineEnter" },
+      event = { "VimEnter" },
     })
 
     use({
