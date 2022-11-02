@@ -255,9 +255,6 @@ return require("packer").startup({
         vim.keymap.set("n", "gpi", function()
           require("goto-preview").goto_preview_implementation()
         end)
-        vim.keymap.set("n", "gP", function()
-          require("goto-preview").close_all_win()
-        end)
       end,
     })
 
