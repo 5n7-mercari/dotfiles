@@ -475,7 +475,19 @@ return require("packer").startup({
         { "rcarriga/nvim-notify", opt = true },
       },
       config = function()
-        require("noice").setup()
+        require("noice").setup({
+          lsp = {
+            signature = {
+              enabled = false,
+            },
+          },
+          routes = {
+            {
+              view = "notify",
+              filter = { event = "msg_showmode" },
+            },
+          },
+        })
       end,
       event = { "VimEnter" },
     })
