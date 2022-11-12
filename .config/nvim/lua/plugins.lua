@@ -501,6 +501,9 @@ return require("packer").startup({
       config = function()
         require("null-ls").setup({
           sources = {
+            -- code_actions
+            require("null-ls").builtins.code_actions.cspell,
+            require("null-ls").builtins.code_actions.gitsigns,
             -- diagnostics
             require("null-ls").builtins.diagnostics.flake8,
             require("null-ls").builtins.diagnostics.markdownlint,
