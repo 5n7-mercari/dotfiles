@@ -23,6 +23,9 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
+# kubectl-krew
+export PATH="$HOME/.krew/bin:$PATH"
+
 # Python
 export PATH="$HOME/.poetry/bin:$PATH"
 
