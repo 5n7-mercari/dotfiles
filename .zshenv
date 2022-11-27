@@ -19,6 +19,13 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 # Docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
+# dotfiles
+export DOTFILES="$HOME/src/github.com/5n7/dotfiles"
+export PATH="$DOTFILES/bin:$PATH"
+
+# ghq
+export GHQ_ROOT="$HOME/src"
+
 # Go
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -28,13 +35,6 @@ export PATH="$HOME/.krew/bin:$PATH"
 
 # Python
 export PATH="$HOME/.poetry/bin:$PATH"
-
-# dotfiles
-export DOTFILES="$HOME/src/github.com/skmatz/dotfiles"
-export PATH="$DOTFILES/bin:$PATH"
-
-# ghq
-export GHQ_ROOT="$HOME/src"
 
 # Zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
