@@ -954,7 +954,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
       end,
-      cmd = { "NvimTreeToggle" },
+      cmd = { "NvimTreeClose", "NvimTreeFindFileToggle", "NvimTreeToggle" },
     })
 
     use({
