@@ -298,6 +298,21 @@ return require("packer").startup({
       event = { "VimEnter" },
     })
 
+    -- index: k
+
+    use({
+      "allaman/kustomize.nvim",
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+      },
+      config = function()
+        require("kustomize").setup()
+      end,
+      ft = { "yaml" },
+    })
+
+    -- index: l
+
     use({
       "ray-x/lsp_signature.nvim",
       config = function()
