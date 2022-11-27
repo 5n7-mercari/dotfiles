@@ -554,22 +554,6 @@ return require("packer").startup({
     })
 
     use({
-      "nkakouros-original/numbers.nvim",
-      config = function()
-        require("numbers").setup({
-          excluded_filetypes = {
-            "alpha",
-            "NvimTree",
-            "packer",
-            "TelescopePrompt",
-            "Trouble",
-          },
-        })
-      end,
-      event = { "BufEnter" },
-    })
-
-    use({
       "windwp/nvim-autopairs",
       after = { "nvim-cmp" },
       config = function()
