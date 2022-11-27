@@ -327,6 +327,42 @@ return require("packer").startup({
     })
 
     use({
+      "lukas-reineke/lsp-format.nvim",
+      config = function()
+        require("lsp-format").setup()
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      after = { "nvim-lspconfig" },
+      config = function()
+        require("lsp_lines").setup()
+      end,
+      setup = function()
+        vim.diagnostic.config({
+          virtual_text = false,
+        })
+        vim.keymap.set("n", "<leader>vl", function()
+          require("lsp_lines").toggle()
+        end)
+      end,
+    })
+
+    use({
+      "glepnir/lspsaga.nvim",
+      config = function()
+        require("lspsaga").init_lsp_saga()
+      end,
+      setup = function()
+        vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<cr>")
+        vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+      end,
+      cmd = { "Lspsaga" },
+    })
+
+    use({
       "nvim-lualine/lualine.nvim",
       after = { "catppuccin", "nvim-gps" },
       requires = {
@@ -374,44 +410,6 @@ return require("packer").startup({
           },
         })
       end,
-    })
-
-    -- index: l
-
-    use({
-      "lukas-reineke/lsp-format.nvim",
-      config = function()
-        require("lsp-format").setup()
-      end,
-      event = { "VimEnter" },
-    })
-
-    use({
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      after = { "nvim-lspconfig" },
-      config = function()
-        require("lsp_lines").setup()
-      end,
-      setup = function()
-        vim.diagnostic.config({
-          virtual_text = false,
-        })
-        vim.keymap.set("n", "<leader>vl", function()
-          require("lsp_lines").toggle()
-        end)
-      end,
-    })
-
-    use({
-      "glepnir/lspsaga.nvim",
-      config = function()
-        require("lspsaga").init_lsp_saga()
-      end,
-      setup = function()
-        vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<cr>")
-        vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-      end,
-      cmd = { "Lspsaga" },
     })
 
     use({
