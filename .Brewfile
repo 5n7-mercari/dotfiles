@@ -93,6 +93,7 @@ cask "tailscale"
 cask "visual-studio-code"
 cask "vivaldi"
 cask "vlc"
+cask "wezterm"
 cask "zoom"
 mas "Messer", id: 1586304988
 mas "RunCat", id: 1429033973
