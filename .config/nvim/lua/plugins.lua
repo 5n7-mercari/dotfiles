@@ -258,6 +258,14 @@ return require("packer").startup({
       end,
     })
 
+    use({
+      "hudclark/grpc-nvim",
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+      },
+      cmd = { "Grpc" },
+    })
+
     -- index: h
 
     use({
