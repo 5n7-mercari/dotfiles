@@ -15,6 +15,11 @@ fzf::cd() {
 zle -N fzf::cd
 bindkey "^T" fzf::cd
 
+fzf::gcloud-config() {
+	local config=$(gcloud config configurations list --format='table(is_active.yesno(yes="[x]",no="[_]"),name,properties.core.account,properties.core.project.yesno(no="(unset)"))' | fzf --header-lines=1 | awk '{print $2}')
+	[[ -n "$config" ]] && gcloud config configurations activate "$config"
+}
+
 fzf::cd-ghq() {
 	local dir=$(ghq list -p | fzf --preview "glow --style dark {}/README.*")
 	[[ -n "$dir" ]] && cd "$dir"
