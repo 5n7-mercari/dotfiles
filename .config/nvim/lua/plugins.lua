@@ -157,14 +157,6 @@ return require("packer").startup({
     -- index: f
 
     use({
-      "gukz/ftFT.nvim",
-      config = function()
-        require("ftFT").setup()
-      end,
-      keys = { "f", "F", "t", "T" },
-    })
-
-    use({
       "j-hui/fidget.nvim",
       after = { "nvim-lspconfig" },
       config = function()
@@ -175,6 +167,14 @@ return require("packer").startup({
     use({
       "rafamadriz/friendly-snippets",
       event = { "VimEnter" },
+    })
+
+    use({
+      "gukz/ftFT.nvim",
+      config = function()
+        require("ftFT").setup()
+      end,
+      keys = { "f", "F", "t", "T" },
     })
 
     -- index: g
