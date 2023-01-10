@@ -35,6 +35,14 @@ return require("packer").startup({
     })
 
     use({
+      "asiryk/auto-hlsearch.nvim",
+      config = function()
+        require("auto-hlsearch").setup()
+      end,
+      event = { "CmdLineEnter" },
+    })
+
+    use({
       "rmagatti/auto-session",
       after = { "git-conflict.nvim" },
       config = function()
