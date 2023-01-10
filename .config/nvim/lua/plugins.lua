@@ -1055,7 +1055,7 @@ return require("packer").startup({
     })
 
     use({
-      "p00f/nvim-ts-rainbow",
+      "mrjones2014/nvim-ts-rainbow",
       after = { "nvim-treesitter" },
       config = function()
         require("nvim-treesitter.configs").setup({ rainbow = { enable = true } })
