@@ -1247,7 +1247,12 @@ return require("packer").startup({
     use({
       "tanvirtin/vgit.nvim",
       config = function()
-        require("vgit").setup()
+        require("vgit").setup({
+          keymaps = {
+            ["n <c-k>"] = "hunk_up",
+            ["n <c-j>"] = "hunk_down",
+          },
+        })
       end,
       setup = function()
         vim.keymap.set("n", "<leader>gh", "<cmd>VGit buffer_history_preview<cr>")
