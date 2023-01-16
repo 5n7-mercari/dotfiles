@@ -1112,6 +1112,9 @@ return require("packer").startup({
 
     use({
       "tversteeg/registers.nvim",
+      config = function()
+        require("registers").setup()
+      end,
       keys = { '"' },
     })
 
