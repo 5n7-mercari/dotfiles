@@ -1,5 +1,3 @@
-pcall(require, "impatient")
-
 vim.g.mapleader = " "
 
 vim.opt.cmdheight = 0
@@ -50,11 +48,11 @@ for _, plugin in pairs(builtin_plugins) do
   disable_builtin_plugin(plugin)
 end
 
-local path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
-
+local path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if vim.fn.empty(vim.fn.glob(path)) > 0 then
-  vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", path })
+  vim.fn.system({ "git", "clone", "https://github.com/folke/lazy.nvim", path })
 end
+vim.opt.rtp:prepend(path)
 
 require("autocmds")
 require("keymaps")
