@@ -42,7 +42,7 @@ return require("lazy").setup({
         require("bufdelete").bufdelete(0, true)
       end)
     end,
-    keys = "<m-w>",
+    event = "VeryLazy",
   },
 
   -- index: c
@@ -526,6 +526,7 @@ return require("lazy").setup({
         require("nvim-autopairs.completion.cmp").on_confirm_done()
       )
     end,
+    event = "InsertEnter",
   },
 
   {
