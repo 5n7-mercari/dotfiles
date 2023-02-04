@@ -63,4 +63,10 @@ ls.add_snippets("go", {
       "}",
     }),
   }),
+
+  s("errf", {
+    t('fmt.Errorf("failed to '),
+    i(1),
+    t(': %w", err)'),
+  }),
 })
