@@ -158,7 +158,7 @@ return require("lazy").setup({
     config = function()
       require("gitlinker").setup()
     end,
-    keys = "<leader>gy",
+    event = "VeryLazy",
   },
 
   {
