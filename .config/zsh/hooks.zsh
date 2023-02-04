@@ -1,5 +1,5 @@
 chpwd-ls() {
-	if [[ $(ls -al | wc -l) -gt 32 ]]; then
+	if [[ $(ls -a | wc -l) -gt 32 ]]; then
 		echo "so many files"
 		return
 	fi
@@ -11,14 +11,12 @@ chpwd-ls() {
 	fi
 }
 
-chpwd-rename-tmux() {
+chpwd-tmux-rename-window() {
 	if [[ -z "$TMUX" ]]; then
 		return
 	fi
 
-	autoload -Uz vcs_info
-	vcs_info
-
+	autoload -Uz vcs_info && vcs_info
 	if [[ -n "$vcs_info_msg_0_" ]]; then
 		dir="$(git rev-parse --show-toplevel)"
 		IFS="/" read -Ar array <<<"$dir"
@@ -30,6 +28,4 @@ chpwd-rename-tmux() {
 
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd chpwd-ls
-if hash "tmux" >/dev/null 2>&1; then
-	add-zsh-hook chpwd chpwd-rename-tmux
-fi
+add-zsh-hook chpwd chpwd-tmux-rename-window
