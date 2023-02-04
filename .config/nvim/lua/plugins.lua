@@ -313,7 +313,7 @@ return require("lazy").setup({
       vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
     end,
     config = function()
-      require("lspsaga").init_lsp_saga()
+      require("lspsaga").setup()
     end,
     cmd = "Lspsaga",
   },
