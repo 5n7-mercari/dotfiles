@@ -11,7 +11,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Homebrew
+export HOMEBREW_NO_INSTALL_FROM_API=1
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
 
 # asdf
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
