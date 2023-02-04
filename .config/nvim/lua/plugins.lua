@@ -1009,6 +1009,15 @@ return require("lazy").setup({
   },
 
   {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup()
+    end,
+    event = "VeryLazy",
+  },
+
+  {
     "folke/trouble.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     init = function()
