@@ -387,7 +387,7 @@ return require("lazy").setup({
           "dockerls",
           "gopls",
           "pyright",
-          "sumneko_lua",
+          "lua_ls",
           "terraformls",
           "vimls",
         },
@@ -712,7 +712,7 @@ return require("lazy").setup({
             end
           end
 
-          if server == "sumneko_lua" then
+          if server == "lua_ls" then
             opts.on_attach = function(client, buffer)
               on_attach(client, buffer)
               client.server_capabilities.document_formatting = false
