@@ -320,7 +320,7 @@ return require("lazy").setup({
 
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "SmiteshP/nvim-gps", "kyazdani42/nvim-web-devicons" },
+    dependencies = { "SmiteshP/nvim-navic", "kyazdani42/nvim-web-devicons" },
     config = function()
       require("lualine").setup({
         options = {
@@ -334,7 +334,7 @@ return require("lazy").setup({
         sections = {
           lualine_a = { { "mode" } },
           lualine_b = { { "filename", path = 1 } },
-          lualine_c = { { require("nvim-gps").get_location, cond = require("nvim-gps").is_available } },
+          lualine_c = { { require("nvim-navic").get_location, cond = require("nvim-navic").is_available } },
           lualine_x = { { "encoding" }, { "fileformat" }, { "filetype", icon_only = true } },
           lualine_y = { { "branch" }, { "diff" }, { "diagnostics" } },
           lualine_z = { { "location" } },
@@ -685,7 +685,12 @@ return require("lazy").setup({
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "hrsh7th/cmp-nvim-lsp", "lukas-reineke/lsp-format.nvim", "williamboman/mason-lspconfig.nvim" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "lukas-reineke/lsp-format.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "SmiteshP/nvim-navic",
+    },
     init = function()
       vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
     end,
@@ -695,6 +700,9 @@ return require("lazy").setup({
           local capabilities = require("cmp_nvim_lsp").default_capabilities()
           local on_attach = function(client, buffer)
             require("lsp-format").on_attach(client)
+            if client.server_capabilities.documentSymbolProvider then
+              require("nvim-navic").attach(client, buffer)
+            end
 
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
