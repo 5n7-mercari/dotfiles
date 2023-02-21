@@ -386,7 +386,7 @@ return require("lazy").setup({
           -- "dagger",
           "dockerls",
           "gopls",
-          "json-lsp",
+          "jsonls",
           "lua_ls",
           "pyright",
           "terraformls",
