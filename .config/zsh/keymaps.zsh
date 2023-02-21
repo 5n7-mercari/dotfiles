@@ -47,6 +47,13 @@ fzf::kill() {
 zle -N fzf::kill
 bindkey "^K" fzf::kill
 
+fzf::pushd() {
+  local pushd_number=$(dirs -v | fzf | perl -anE 'say $F[0]')
+  [[ -n "$pushd_number" ]] && pushd +$pushd_number
+}
+zle -N fzf::pushd
+bindkey "^J" fzf::pushd
+
 fzf::open() {
 	local file=$(fd --hidden --type file | fzf --preview "bat --color always --style header {}")
 	[[ -n "$file" ]] && $EDITOR $file
