@@ -464,6 +464,10 @@ return require("lazy").setup({
             view = "mini",
             filter = { event = "msg_showmode" },
           },
+          {
+            view = "mini",
+            filter = { event = "msg_show", find = "written" },
+          },
         },
       })
     end,
