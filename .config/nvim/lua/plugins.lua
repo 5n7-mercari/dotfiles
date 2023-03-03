@@ -407,18 +407,6 @@ return require("lazy").setup({
         automatic_setup = false,
       })
     end,
-    ensure_installed = {
-      "black",
-      "cspell",
-      "flake8",
-      "goimports",
-      "isort",
-      "prettier",
-      "protolint",
-      "shellcheck",
-      "shfmt",
-      "stylua",
-    },
     event = "VeryLazy",
   },
 
