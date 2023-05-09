@@ -825,52 +825,37 @@ return require("lazy").setup({
       vim.keymap.set("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
     end,
     config = function()
+      local api = require("nvim-tree.api")
+
+      local on_attach = function(buffer)
+        vim.keymap.set("n", "<cr>", api.node.edit, { buffer = buffer })
+        vim.keymap.set("n", "<c-v>", api.node.open.vertical, { buffer = buffer })
+        vim.keymap.set("n", "<c-x>", api.node.open.horizontal, { buffer = buffer })
+        vim.keymap.set("n", "<tab>", api.node.open.preview, { buffer = buffer })
+        vim.keyamp.set("nf", "H", api.tree.toggle_hidden_filter, { buffer = buffer })
+        vim.keymap.set("n", "R", api.tree.reload, { buffer = buffer })
+        vim.keymap.set("n", "a", api.fs.create, { buffer = buffer })
+        vim.keymap.set("n", "d", api.fs.remove, { buffer = buffer })
+        vim.keymap.set("n", "r", api.fs.rename, { buffer = buffer })
+        vim.keymap.set("n", "x", api.fs.cut, { buffer = buffer })
+        vim.keymap.set("n", "c", api.fs.copy.node, { buffer = buffer })
+        vim.keymap.set("n", "y", api.fs.copy.filename, { buffer = buffer })
+        vim.keymap.set("n", "Y", api.fs.copy.relative_path, { buffer = buffer })
+        vim.keymap.set("n", "p", api.fs.paste, { buffer = buffer })
+        vim.keymap.set("n", "f", api.live_filter.start, { buffer = buffer })
+        vim.keymap.set("n", "F", api.live_filter.clear, { buffer = buffer })
+        vim.keymap.set("n", "g?", api.tree.toggle_help, { buffer = buffer })
+      end
+
+      require("nvim-tree").setup({
+        on_attach = on_attach,
+      })
+
       require("nvim-tree").setup({
         reload_on_bufenter = true,
         diagnostics = { enable = true },
         git = { ignore = false },
-        view = {
-          width = 40,
-          mappings = {
-            custom_only = true,
-            list = {
-              { key = { "<cr>" }, action = "edit" },
-              { key = { "<c-]>" }, action = "cd" },
-              { key = { "<c-v>" }, action = "vsplit" },
-              { key = { "<c-x>" }, action = "split" },
-              { key = { "<c-t>" }, action = "tabnew" },
-              { key = { "<" }, action = "prev_sibling" },
-              { key = { ">" }, action = "next_sibling" },
-              { key = { "P" }, action = "parent_node" },
-              { key = { "<bs>" }, action = "close_node" },
-              { key = { "<s-cr>" }, action = "close_node" },
-              { key = { "<tab>" }, action = "preview" },
-              { key = { "K" }, action = "first_sibling" },
-              { key = { "J" }, action = "last_sibling" },
-              { key = { "I" }, action = "toggle_ignored" },
-              { key = { "H" }, action = "toggle_dotfiles" },
-              { key = { "R" }, action = "refresh" },
-              { key = { "a" }, action = "create" },
-              { key = { "d" }, action = "remove" },
-              { key = { "r", "<f2>" }, action = "rename" },
-              { key = { "<c-r>" }, action = "full_rename" },
-              { key = { "x" }, action = "cut" },
-              { key = { "c" }, action = "copy" },
-              { key = { "p" }, action = "paste" },
-              { key = { "y" }, action = "copy_name" },
-              { key = { "Y" }, action = "copy_path" },
-              { key = { "gy" }, action = "copy_absolute_path" },
-              { key = { "[c}" }, action = "prev_git_item" },
-              { key = { "]c}" }, action = "next_git_item" },
-              { key = { "<c-[" }, action = "dir_up" },
-              { key = { "o" }, action = "system_open" },
-              { key = { "f" }, action = "live_filter" },
-              { key = { "F" }, action = "clear_live_filter" },
-              { key = { "q" }, action = "close" },
-              { key = { "g?" }, action = "toggle_help" },
-            },
-          },
-        },
+        view = { width = 40 },
       })
     end,
     cmd = { "NvimTreeClose", "NvimTreeFindFileToggle", "NvimTreeToggle" },
