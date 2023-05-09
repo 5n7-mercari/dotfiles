@@ -487,15 +487,16 @@ return require("lazy").setup({
           require("null-ls").builtins.code_actions.cspell,
           require("null-ls").builtins.code_actions.gitsigns,
           -- diagnostics
+          require("null-ls").builtins.diagnostics.buf,
           require("null-ls").builtins.diagnostics.flake8,
           require("null-ls").builtins.diagnostics.markdownlint,
-          require("null-ls").builtins.diagnostics.protolint,
           require("null-ls").builtins.diagnostics.shellcheck,
           require("null-ls").builtins.diagnostics.zsh,
           -- formatting
           require("null-ls").builtins.formatting.black,
           require("null-ls").builtins.formatting.buf,
           require("null-ls").builtins.formatting.clang_format,
+          require("null-ls").builtins.formatting.cue_fmt,
           require("null-ls").builtins.formatting.goimports,
           require("null-ls").builtins.formatting.isort,
           require("null-ls").builtins.formatting.latexindent,
