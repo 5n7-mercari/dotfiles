@@ -971,6 +971,23 @@ return require("lazy").setup({
     keys = '"',
   },
 
+  -- index: s
+
+  {
+    "rmagatti/session-lens",
+    dependencies = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+    init = function()
+      vim.keymap.set("n", "<leader>ls", function()
+        require("session-lens").search_session()
+      end)
+    end,
+    config = function()
+      require("session-lens").setup()
+      require("telescope").load_extension("session-lens")
+    end,
+    keys = "VeryLazy",
+  },
+
   -- index: t
 
   {
