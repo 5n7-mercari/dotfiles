@@ -18,13 +18,14 @@ return require("lazy").setup({
   {
     "rmagatti/auto-session",
     init = function()
-      vim.keymap.set("n", "<leader>ss", "<cmd>SaveSession<cr>")
+      vim.keymap.set("n", "<leader>ss", "<cmd>SessionSave<cr>")
 
       vim.g.auto_session_pre_save_cmds = { "NvimTreeClose" }
       vim.opt.sessionoptions:append({ "folds", "terminal", "winpos" })
     end,
     config = function()
       require("auto-session").setup({
+        log_level = "error",
         auto_save_enabled = true,
         auto_restore_enabled = true,
         auto_session_suppress_dirs = { "~" },
