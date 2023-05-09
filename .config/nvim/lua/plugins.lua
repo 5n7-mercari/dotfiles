@@ -186,9 +186,11 @@ return require("lazy").setup({
 
   {
     "ray-x/go.nvim",
+    dependencies = { "ray-x/guihua.lua" },
     build = ":GoUpdateBinaries",
     init = function()
       vim.keymap.set("n", "<leader>fs", "<cmd>GoFillStruct<cr>")
+      vim.keymap.set("n", "<leader>tt", "<cmd>GoTestFunc<cr>")
     end,
     config = function()
       require("go").setup()
