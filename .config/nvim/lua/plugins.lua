@@ -323,7 +323,7 @@ return require("lazy").setup({
 
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "SmiteshP/nvim-navic", "kyazdani42/nvim-web-devicons" },
+    dependencies = { "rmagatti/auto-session", "SmiteshP/nvim-navic", "kyazdani42/nvim-web-devicons" },
     config = function()
       require("lualine").setup({
         options = {
@@ -337,10 +337,20 @@ return require("lazy").setup({
         sections = {
           lualine_a = { { "mode" } },
           lualine_b = { { "filename", path = 1 } },
-          lualine_c = { { require("nvim-navic").get_location, cond = require("nvim-navic").is_available } },
+          lualine_c = {
+            { require("auto-session.lib").current_session_name },
+            {
+              function()
+                return require("nvim-navic").get_location()
+              end,
+              cond = function()
+                return require("nvim-navic").is_available()
+              end,
+            },
+          },
           lualine_x = { { "encoding" }, { "fileformat" }, { "filetype", icon_only = true } },
           lualine_y = { { "branch" }, { "diff" }, { "diagnostics" } },
-          lualine_z = { { "location" } },
+          lualine_z = { { "location" }, { "selectioncount" } },
         },
         inactive_sections = {
           lualine_a = {},
