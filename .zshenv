@@ -41,8 +41,5 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # Zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-# Zsh-z
-export _Z_DATA="$XDG_DATA_HOME"/z
-
 # local
 [[ -f "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"

@@ -27,9 +27,5 @@ apply = ["defer"]
 github = "darvid/zsh-poetry"
 apply = ["defer"]
 
-[plugins.zsh-z]
-github = "agkozak/zsh-z"
-apply = ["defer"]
-
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
