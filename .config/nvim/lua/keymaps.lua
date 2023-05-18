@@ -30,3 +30,5 @@ vim.keymap.set("n", "<leader>w", "<cmd>wa<cr>")
 vim.keymap.set("n", "<leader>W", "<cmd>noa wa<cr>")
 
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
+
+vim.keymap.set("n", "<leader>yp", '<cmd>let @+ = expand("%")<cr>')
