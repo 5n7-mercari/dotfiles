@@ -1016,7 +1016,7 @@ return require("lazy").setup({
       end)
       vim.keymap.set("n", "<leader>lG", function()
         require("telescope.builtin").live_grep({
-          glob_pattern = "!*_test.go",
+          glob_pattern = "!*{*.yaml,*.yml,_test.go}",
         })
       end)
       vim.keymap.set("n", "gi", function()
