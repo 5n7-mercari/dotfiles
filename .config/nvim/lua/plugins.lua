@@ -261,7 +261,7 @@ return require("lazy").setup({
     config = function()
       require("indent-o-matic").setup({})
     end,
-    event = "VeryLazy",
+    event = "BufReadPost",
   },
 
   -- index: k
