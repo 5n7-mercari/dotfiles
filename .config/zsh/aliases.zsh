@@ -24,6 +24,7 @@ alias mv="mv -i"
 
 if hash "docker" >/dev/null 2>&1; then
 	alias d="docker"
+	alias dc="docker compose"
 	alias dim="docker images"
 	alias dps="docker ps"
 	alias dpsa="docker ps -a"
@@ -44,10 +45,6 @@ if hash "docker" >/dev/null 2>&1; then
 		}
 		alias fzfdrc="fzf::docker-run-container"
 	fi
-fi
-
-if hash "docker-compose" >/dev/null 2>&1; then
-	alias dc="docker-compose"
 fi
 
 if hash "lsd" >/dev/null 2>&1; then
@@ -98,6 +95,10 @@ fi
 
 if hash "kubectl" >/dev/null 2>&1; then
 	alias k="kubectl"
+fi
+
+if hash "lazygit" >/dev/null 2>&1; then
+	alias lg="lazygit"
 fi
 
 if hash "nvim" >/dev/null 2>&1; then
