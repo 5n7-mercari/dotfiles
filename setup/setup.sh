@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$HOME/src/github.com/5n7-mercari/dotfiles"
+XDG_CONFIG_HOME="$HOME/.config"
+
+mkdir -p "$XDG_CONFIG_HOME"
 
 print() {
 	echo -e "\033[36m$*\033[0m"
@@ -20,6 +23,9 @@ ln -fs "$DOTFILES_DIR"/.config/tmux "$XDG_CONFIG_HOME"/tmux
 ln -fs "$DOTFILES_DIR"/.config/wezxterm "$XDG_CONFIG_HOME"/wezterm
 ln -fs "$DOTFILES_DIR"/.config/zsh "$XDG_CONFIG_HOME"/zsh
 
+print "installing Rosetta 2..."
+softwareupdate --install-rosetta
+
 print "installing Homebrew..."
 # TODO: Add scripts to install Homebrew.
 
@@ -28,3 +34,6 @@ print "installing Homebrew packages..."
 
 print "installing programming languages..."
 # asdf install golang X.Y.Z
+
+print "setting up Tmux..."
+git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm && tmux source ~/.config/tmux/tmux.conf && ~/.config/tmux/plugins/tpm/scripts/install_plugins.sh
